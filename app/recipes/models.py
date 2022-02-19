@@ -3,12 +3,27 @@ from django.db import models
 
 class Recipe(models.Model):
     """Рецепт"""
-    recipe_name = models.CharField("Название рецепта", max_length=50, null=False)
-    recipe_description = models.CharField("Описание рецепта", max_length=1000, null=False)
-    prep_time = models.CharField("Время приготовления", max_length=10, null=False)
+    recipe_name = models.CharField(
+        "Название рецепта",
+        max_length=50,
+        null=False
+    )
+    category = models.ForeignKey(
+        "Category",
+        on_delete=models.PROTECT,
+        verbose_name="Категория",
+        null=False,
+        blank=False,
+    )
+    recipe_description = models.TextField(
+        "Описание рецепта",
+        max_length=1000,
+        null=False
+    )
+    prep_time = models.CharField("Время приготовления", max_length=50, null=False)
 
     def __str__(self):
-        return f'{self.recipe_name}\n{self.recipe_description}\n{self.prep_time}'
+        return f'{self.recipe_name}\n{self.category}\n{self.recipe_description}\n{self.prep_time}'
 
     class Meta:
         app_label = "recipes"
@@ -19,10 +34,9 @@ class Recipe(models.Model):
 class Category(models.Model):
     """Категория"""
     food_category = models.CharField("Категория", max_length=50, null=False)
-    cuisine = models.CharField("Направление кухни", max_length=50, null=False)
 
     def __str__(self):
-        return f'{self.food_category}\n{self.cuisine}'
+        return f'{self.food_category}\n{self.food_category}'
 
     class Meta:
         app_label = "recipes"
@@ -33,7 +47,10 @@ class Category(models.Model):
 class Ingredients(models.Model):
     """Ингредиенты"""
 
-    ingredient_name = models.CharField("Название ингредиента", max_length=50, null=False)
+    ingredient_name = models.CharField("Название ингредиента", max_length=50, null=False)\
+    recipe = models.ManyToManyField(
+        "Рецепт", verbose_name="Рецепты",
+    )
 
     def __str__(self):
         return self.ingredient_name
@@ -46,11 +63,17 @@ class Ingredients(models.Model):
 
 class Quantity(models.Model):
     """Количество"""
-
-    ingredient_quantity = models.CharField("Количество ингредиентов", max_length=50, null=False)
+    measurement = models.ForeignKey(
+        "Measurement",
+        on_delete=models.PROTECT,
+        verbose_name="ед. измерения",
+        null=False,
+        blank=False,
+    )
+    ingredient_quantity = models.IntegerField("Количество ингредиентов",)
 
     def __str__(self):
-        return f"{self.ingredient_quantity}"
+        return f"{self.ingredient_quantity} {self.measurement}"
 
     class Meta:
         app_label = "recipes"
@@ -58,13 +81,13 @@ class Quantity(models.Model):
         verbose_name_plural = "количество"
 
 
-class Measurements(models.Model):
+class Measurement(models.Model):
     """Единицы измерения"""
 
-    measurement_name = models.CharField("Ед. измерения", max_length=1000, null=False)
+    name = models.CharField("ед. измерения", max_length=1000, null=False)
 
     def __str__(self):
-        return f"{self.measurement_name}"
+        return f"{self.name}"
 
     class Meta:
         app_label = "recipes"
@@ -72,15 +95,3 @@ class Measurements(models.Model):
         verbose_name_plural = "ед. измерения"
 
 
-class RecipeSteps(models.Model):
-    """Этапы"""
-
-    step_description = models.CharField("Описание этапа", max_length=1000, null=False)
-
-    def __str__(self):
-        return f"{self.step_description}"
-
-    class Meta:
-        app_label = "recipes"
-        verbose_name = "этап"
-        verbose_name_plural = "этапы"
