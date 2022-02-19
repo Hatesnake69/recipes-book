@@ -9,7 +9,7 @@ class Recipe(models.Model):
         null=False
     )
     category = models.ForeignKey(
-        "Category",
+        Category,
         on_delete=models.PROTECT,
         verbose_name="Категория",
         null=False,
@@ -23,7 +23,7 @@ class Recipe(models.Model):
     prep_time = models.CharField("Время приготовления", max_length=50, null=False)
 
     def __str__(self):
-        return f'{self.recipe_name}\n{self.category}\n{self.recipe_description}\n{self.prep_time}'
+        return self.recipe_name
 
     class Meta:
         app_label = "recipes"
@@ -36,7 +36,7 @@ class Category(models.Model):
     food_category = models.CharField("Категория", max_length=50, null=False)
 
     def __str__(self):
-        return f'{self.food_category}\n{self.food_category}'
+        return self.food_category
 
     class Meta:
         app_label = "recipes"
@@ -47,7 +47,7 @@ class Category(models.Model):
 class Ingredients(models.Model):
     """Ингредиенты"""
 
-    ingredient_name = models.CharField("Название ингредиента", max_length=50, null=False)\
+    ingredient_name = models.CharField("Название ингредиента", max_length=50, null=False)
     recipe = models.ManyToManyField(
         "Рецепт", verbose_name="Рецепты",
     )
