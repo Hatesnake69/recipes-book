@@ -30,7 +30,6 @@ class Recipe(models.Model):
     )
     recipe_description = models.TextField(
         "Описание рецепта",
-        max_length=1000,
         null=False
     )
     prep_time = models.CharField("Время приготовления", max_length=50, null=False)
@@ -44,7 +43,7 @@ class Recipe(models.Model):
         verbose_name_plural = "Рецепты"
 
 
-class Ingredients(models.Model):
+class Ingredient(models.Model):
     """Ингредиенты"""
 
     ingredient_name = models.CharField("Название ингредиента", max_length=50, null=False)
@@ -77,6 +76,20 @@ class Measurement(models.Model):
 
 class Quantity(models.Model):
     """Количество"""
+    recipe = models.ForeignKey(
+        Recipe,
+        on_delete=models.PROTECT,
+        verbose_name="Рецепт",
+        null=False,
+        blank=False,
+    )
+    ingredient = models.ForeignKey(
+        Ingredient,
+        on_delete=models.PROTECT,
+        verbose_name="Ингридиент",
+        null=False,
+        blank=False,
+    )
     measurement = models.ForeignKey(
         Measurement,
         on_delete=models.PROTECT,

@@ -21,5 +21,5 @@ import recipes.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", recipes.views.home, name="home"),
-    path("books", recipes.views.recipes, name="recipes"),
+    path("recipes", recipes.views.recipes, name="recipes"),
 ]
