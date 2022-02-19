@@ -1,6 +1,19 @@
 from django.db import models
 
 
+class Category(models.Model):
+    """Категория"""
+    food_category = models.CharField("Категория", max_length=50, null=False)
+
+    def __str__(self):
+        return self.food_category
+
+    class Meta:
+        app_label = "recipes"
+        verbose_name = "категория"
+        verbose_name_plural = "категории"
+
+
 class Recipe(models.Model):
     """Рецепт"""
     recipe_name = models.CharField(
@@ -31,25 +44,12 @@ class Recipe(models.Model):
         verbose_name_plural = "Рецепты"
 
 
-class Category(models.Model):
-    """Категория"""
-    food_category = models.CharField("Категория", max_length=50, null=False)
-
-    def __str__(self):
-        return self.food_category
-
-    class Meta:
-        app_label = "recipes"
-        verbose_name = "категория"
-        verbose_name_plural = "категории"
-
-
 class Ingredients(models.Model):
     """Ингредиенты"""
 
     ingredient_name = models.CharField("Название ингредиента", max_length=50, null=False)
     recipe = models.ManyToManyField(
-        "Рецепт", verbose_name="Рецепты",
+        Recipe, verbose_name="Рецепты",
     )
 
     def __str__(self):
@@ -61,10 +61,24 @@ class Ingredients(models.Model):
         verbose_name_plural = "ингредиенты"
 
 
+class Measurement(models.Model):
+    """Единицы измерения"""
+
+    name = models.CharField("ед. измерения", max_length=1000, null=False)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        app_label = "recipes"
+        verbose_name = "ед. измерения"
+        verbose_name_plural = "ед. измерения"
+
+
 class Quantity(models.Model):
     """Количество"""
     measurement = models.ForeignKey(
-        "Measurement",
+        Measurement,
         on_delete=models.PROTECT,
         verbose_name="ед. измерения",
         null=False,
@@ -73,7 +87,7 @@ class Quantity(models.Model):
     ingredient_quantity = models.IntegerField("Количество ингредиентов",)
 
     def __str__(self):
-        return f"{self.ingredient_quantity} {self.measurement}"
+        return self.ingredient_quantity
 
     class Meta:
         app_label = "recipes"
@@ -81,17 +95,6 @@ class Quantity(models.Model):
         verbose_name_plural = "количество"
 
 
-class Measurement(models.Model):
-    """Единицы измерения"""
 
-    name = models.CharField("ед. измерения", max_length=1000, null=False)
-
-    def __str__(self):
-        return f"{self.name}"
-
-    class Meta:
-        app_label = "recipes"
-        verbose_name = "ед. измерения"
-        verbose_name_plural = "ед. измерения"
 
 
