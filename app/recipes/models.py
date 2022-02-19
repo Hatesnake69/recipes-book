@@ -1,27 +1,14 @@
-from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 
-class TimeStampMixin(models.Model):
-    """Реализация атрибутов времени создания и обновления записи"""
-
-    created_at = models.DateTimeField("Время создания записи", auto_now_add=True)
-    updated_at = models.DateTimeField("Время обновления записи", auto_now=True)
-
-    class Meta:
-        abstract = True
-
-
-class Recipe(TimeStampMixin):
+class Recipe(models.Model):
     """Рецепт"""
     recipe_name = models.CharField("Название рецепта", max_length=50, null=False)
     recipe_description = models.CharField("Описание рецепта", max_length=1000, null=False)
-    food_category = models.CharField("Категория", max_length=50, null=False)
-    cuisine = models.CharField("Направление кухни", max_length=50, null=False)
     prep_time = models.CharField("Время приготовления", max_length=10, null=False)
 
     def __str__(self):
-        return f'{self.recipe_name}\n{self.recipe_description}\n{self.food_category}\n{self.cuisine}\n{self.prep_time}'
+        return f'{self.recipe_name}\n{self.recipe_description}\n{self.prep_time}'
 
     class Meta:
         app_label = "recipes"
@@ -29,7 +16,21 @@ class Recipe(TimeStampMixin):
         verbose_name_plural = "Рецепты"
 
 
-class Ingredients(TimeStampMixin):
+class Category(models.Model):
+    """Категория"""
+    food_category = models.CharField("Категория", max_length=50, null=False)
+    cuisine = models.CharField("Направление кухни", max_length=50, null=False)
+
+    def __str__(self):
+        return f'{self.food_category}\n{self.cuisine}'
+
+    class Meta:
+        app_label = "recipes"
+        verbose_name = "категория"
+        verbose_name_plural = "категории"
+
+
+class Ingredients(models.Model):
     """Ингредиенты"""
 
     ingredient_name = models.CharField("Название ингредиента", max_length=50, null=False)
@@ -43,7 +44,7 @@ class Ingredients(TimeStampMixin):
         verbose_name_plural = "ингредиенты"
 
 
-class Quantity(TimeStampMixin):
+class Quantity(models.Model):
     """Количество"""
 
     ingredient_quantity = models.CharField("Количество ингредиентов", max_length=50, null=False)
@@ -57,7 +58,21 @@ class Quantity(TimeStampMixin):
         verbose_name_plural = "количество"
 
 
-class RecipeSteps(TimeStampMixin):
+class Measurements(models.Model):
+    """Единицы измерения"""
+
+    measurement_name = models.CharField("Ед. измерения", max_length=1000, null=False)
+
+    def __str__(self):
+        return f"{self.measurement_name}"
+
+    class Meta:
+        app_label = "recipes"
+        verbose_name = "ед. измерения"
+        verbose_name_plural = "ед. измерения"
+
+
+class RecipeSteps(models.Model):
     """Этапы"""
 
     step_description = models.CharField("Описание этапа", max_length=1000, null=False)
