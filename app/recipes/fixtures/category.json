@@ -1,0 +1,30 @@
+[
+{
+    "model": "recipes.category",
+    "pk": 2,
+    "fields": {
+        "food_category": "Суп"
+    }
+},
+{
+    "model": "recipes.category",
+    "pk": 3,
+    "fields": {
+        "food_category": "Горячее"
+    }
+},
+{
+    "model": "recipes.category",
+    "pk": 4,
+    "fields": {
+        "food_category": "Салат"
+    }
+},
+{
+    "model": "recipes.category",
+    "pk": 5,
+    "fields": {
+        "food_category": "Десерт"
+    }
+}
+]

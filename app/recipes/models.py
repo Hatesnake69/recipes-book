@@ -23,7 +23,7 @@ class Recipe(models.Model):
     )
     category = models.ForeignKey(
         Category,
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         verbose_name="Категория",
         null=False,
         blank=False,
@@ -63,7 +63,7 @@ class Ingredient(models.Model):
 class Measurement(models.Model):
     """Единицы измерения"""
 
-    name = models.CharField("ед. измерения", max_length=1000, null=False)
+    name = models.CharField("ед. измерения", max_length=50, null=False)
 
     def __str__(self):
         return self.name
@@ -78,26 +78,26 @@ class Quantity(models.Model):
     """Количество"""
     recipe = models.ForeignKey(
         Recipe,
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         verbose_name="Рецепт",
         null=False,
         blank=False,
     )
     ingredient = models.ForeignKey(
         Ingredient,
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         verbose_name="Ингридиент",
         null=False,
         blank=False,
     )
     measurement = models.ForeignKey(
         Measurement,
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         verbose_name="ед. измерения",
         null=False,
         blank=False,
     )
-    ingredient_quantity = models.IntegerField("Количество ингредиентов",)
+    ingredient_quantity = models.CharField("Количество ингредиентов",  max_length=50, null=False)
 
     def __str__(self):
         return self.ingredient_quantity

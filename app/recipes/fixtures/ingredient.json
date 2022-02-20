@@ -1,0 +1,305 @@
+[
+{
+    "model": "recipes.ingredient",
+    "pk": 2,
+    "fields": {
+        "ingredient_name": "горох",
+        "recipe": [
+            2
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 3,
+    "fields": {
+        "ingredient_name": "копченые свиные рёбра",
+        "recipe": [
+            2
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 4,
+    "fields": {
+        "ingredient_name": "луковица",
+        "recipe": [
+            2
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 5,
+    "fields": {
+        "ingredient_name": "морковь",
+        "recipe": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 6,
+    "fields": {
+        "ingredient_name": "картофель",
+        "recipe": [
+            2
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 7,
+    "fields": {
+        "ingredient_name": "растительное масло",
+        "recipe": [
+            2,
+            4
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 8,
+    "fields": {
+        "ingredient_name": "петрушка",
+        "recipe": [
+            2,
+            4
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 9,
+    "fields": {
+        "ingredient_name": "укроп",
+        "recipe": [
+            2,
+            4
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 10,
+    "fields": {
+        "ingredient_name": "чеснок",
+        "recipe": [
+            2,
+            4
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 11,
+    "fields": {
+        "ingredient_name": "бекон",
+        "recipe": [
+            2,
+            4
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 12,
+    "fields": {
+        "ingredient_name": "горчица",
+        "recipe": [
+            2
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 13,
+    "fields": {
+        "ingredient_name": "соль",
+        "recipe": [
+            2
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 14,
+    "fields": {
+        "ingredient_name": "свежемолотый черный перец",
+        "recipe": [
+            2
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 15,
+    "fields": {
+        "ingredient_name": "горчица",
+        "recipe": [
+            2
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 16,
+    "fields": {
+        "ingredient_name": "картофель",
+        "recipe": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 17,
+    "fields": {
+        "ingredient_name": "свекла",
+        "recipe": [
+            3
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 18,
+    "fields": {
+        "ingredient_name": "яйца",
+        "recipe": [
+            3,
+            4
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 19,
+    "fields": {
+        "ingredient_name": "репчатый лук",
+        "recipe": [
+            3,
+            4
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 20,
+    "fields": {
+        "ingredient_name": "яблоко",
+        "recipe": [
+            3
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 21,
+    "fields": {
+        "ingredient_name": "лимонный сок",
+        "recipe": [
+            3
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 22,
+    "fields": {
+        "ingredient_name": "майонез",
+        "recipe": [
+            3
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 23,
+    "fields": {
+        "ingredient_name": "филе слабосоленой сельди",
+        "recipe": [
+            3
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 24,
+    "fields": {
+        "ingredient_name": "соль",
+        "recipe": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 25,
+    "fields": {
+        "ingredient_name": "молотый черный перец",
+        "recipe": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 26,
+    "fields": {
+        "ingredient_name": "батон белого хлеба",
+        "recipe": [
+            4
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 27,
+    "fields": {
+        "ingredient_name": "соль",
+        "recipe": [
+            2,
+            3,
+            4
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 28,
+    "fields": {
+        "ingredient_name": "зелень тимьяна",
+        "recipe": [
+            4
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 29,
+    "fields": {
+        "ingredient_name": "говяжий фарш",
+        "recipe": [
+            4
+        ]
+    }
+},
+{
+    "model": "recipes.ingredient",
+    "pk": 30,
+    "fields": {
+        "ingredient_name": "молоко",
+        "recipe": [
+            4
+        ]
+    }
+}
+]
