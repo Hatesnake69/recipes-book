@@ -1,0 +1,45 @@
+{% extends 'recipes/base.html' %}
+
+{% load static %}
+
+{% block form %}
+<form class="js-form">
+        {% include 'recipes/select_form.html' with id='recipe_id' title=form.recipe.title subjects=form.recipe.objects subject_selected=form.recipe.selected %}
+        {% include 'recipes/select_form.html' with id='category_id' title=form.category.title subjects=form.category.objects subject_selected=form.category.selected %}
+    </form>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% if not recipes %}
+            {% include 'recipes/none_info.html' %}
+        {% endif %}
+        {% for recipe in recipes %}
+            <h2>{{ recipe }}</h2>
+            <table class="table table-hover js-table">
+                <colgroup>
+                    <col style="width: 15%;">
+                    <col style="width: 30%;">
+                    <col style="width: 25%;">
+                    <col style="width: 30%;">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th scope="col">Название рецепта</th>
+                    <th scope="col">Категория</th>
+                    <th scope="col">Ингредиенты</th>
+                    <th scope="col">Время приготовления</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>{{ recipe.recipe_name }}</td>
+                    <td>{{ recipe.category }}</td>
+                    <td>{{ None }}</td>
+                    <td>{{ recipe.prep_time }}</td>
+                </tr>
+                </tbody>
+            </table>
+        {% endfor %}
+    </div>
+{% endblock %}
