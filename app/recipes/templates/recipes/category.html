@@ -1,10 +1,10 @@
 {% extends 'recipes/base.html' %}
 
 {% block content %}
-{% if recipes %}
-<h1>Рецепты</h1>
+{% if category %}
+<h1>{{ category.food_category }}</h1>
 <ul class="list-group">
-    {% for recipe in recipes %}
+    {% for recipe in category.recipe_set.all %}
     <a href="{% url 'recipes:recipe' recipe.id %}" class="list-group-item list-group-item-action">{{ recipe }}</a>
     {% endfor %}
 </ul>

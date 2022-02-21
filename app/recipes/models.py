@@ -106,8 +106,3 @@ class Quantity(models.Model):
         app_label = "recipes"
         verbose_name = "количество"
         verbose_name_plural = "количество"
-
-
-
-
-

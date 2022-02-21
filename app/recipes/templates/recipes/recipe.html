@@ -1,0 +1,29 @@
+{% extends 'recipes/base.html' %}
+{% block content %}
+{% if recipe %}
+<style>
+   h1 {
+    padding-right: 90px; /* Поле справа */
+    padding-left: 90px; /* Поле справа */
+   }
+
+   b {
+    padding-left: 90px; /* Поле справа */
+   }
+   p {
+    text-indent: 20px; /* Отступ первой строки в пикселах */
+    padding-right: 90px; /* Поле справа */
+    padding-left: 90px; /* Поле справа */
+   }
+  </style>
+<h1>{{ recipe.recipe_name }}</h1>
+<b>Категория: {{ recipe.category }}</b><br>
+<b>Ингредиенты: </b>
+{% for ingredient in recipe.ingredient_set.all %}
+    <a href="{% url 'recipes:ingredient' ingredient.id%}">{{ ingredient.ingredient_name }}</a>
+{% endfor %}
+<br><b>Время приготовления: {{ recipe.prep_time }}</b>
+<br><b>Как готовить:</b>
+<p>{{ recipe.recipe_description }}</p>
+{% endif %}
+{% endblock %}

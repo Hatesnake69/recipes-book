@@ -1,0 +1,14 @@
+{% extends 'recipes/base.html' %}
+
+{% block content %}
+{% if ingredients %}
+<h1>Ингридиенты</h1>
+<ul class="list-group">
+    {% for ingredient in ingredients %}
+    <a href="{% url 'recipes:ingredient' ingredient.id%}" class="list-group-item list-group-item-action">{{ ingredient.ingredient_name }}</a>
+    {% endfor %}
+</ul>
+{% else %}
+<p> ИНГРИДИЕНТОВ НЕТ НОЛЬ НАХУЙ</p>
+{% endif %}
+{%endblock %}

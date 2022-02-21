@@ -1,0 +1,14 @@
+{% extends 'recipes/base.html' %}
+
+{% block content %}
+{% if categories %}
+<h1>Категории блюд</h1>
+<ul class="list-group">
+    {% for category in categories %}
+    <a href="{% url 'recipes:category' category.id%}" class="list-group-item list-group-item-action">{{ category.food_category }}</a>
+    {% endfor %}
+</ul>
+{% else %}
+<p> КАТЕГОРИЙ НЕТ НОЛЬ НАХУЙ</p>
+{% endif %}
+{%endblock %}
